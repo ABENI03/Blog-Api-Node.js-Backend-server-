@@ -78,7 +78,18 @@ module.exports={
         }) 
     },
     commentPost:(data,callback)=>{
+        var queryStatment = 'INSERT INTO `post_comment`( `postId`, `title`, `content`) VALUES (?,?,?)';
+        var values = [
+            data.postid,
+            data.title,
+            data.content
 
+
+        ]
+        pool.query(queryStatment, values, (error, result) => {
+            if (error) return callback(error)
+            else return callback(null, result)
+        }) 
     },
     getCommentByPostId:(data,callback)=>{
         var queryStatment = 'SELECT * FROM `post_comment` WHERE `postId`=?';

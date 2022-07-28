@@ -9,5 +9,5 @@ router.get('/mypost',GetPostbyUserId)
 router.get('/post',GetPostbyPostId)
 router.get('/comment',GetCommentByPostId)
 router.patch('',UpdatePost)
-router.delete('',DeletePost)
+router.delete('',DeletePost) 
 module.exports=router

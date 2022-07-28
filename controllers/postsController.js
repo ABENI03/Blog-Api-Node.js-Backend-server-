@@ -1,6 +1,6 @@
-const { createPost, getPosts, getPostbyUserId, getPostbyPostId } = require("../models/postsModel")
+const { createPost, getPosts, getPostbyUserId, getPostbyPostId, updatePost, deletePost, getCommentByPostId, commentPost } = require("../models/postsModel")
 
-module.exports={
+module.exports={ 
     CreatePost:(req,res)=>{
         createPost(req.body,(error,result)=>{
             if (error) {
@@ -35,10 +35,36 @@ module.exports={
         })
     },
     UpdatePost:(req,res)=>{
-
+        updatePost(req.body,(error,result)=>{
+            if (error) {
+                res.json({
+                    status: 404,
+                    message: error
+                })
+            }
+            else {
+                res.json({
+                    status: 200,
+                    message: 'Post updated successfully'
+                })
+            }
+        })
     },
     DeletePost:(req,res)=>{
-
+        deletePost(req.body,(error,result)=>{
+            if (error) {
+                res.json({
+                    status: 404,
+                    message: error
+                })
+            }
+            else {
+                res.json({
+                    status: 200,
+                    message: 'Post delted successfully'
+                })
+            }
+        })
     },
     GetPostbyUserId:(req,res)=>{
         getPostbyUserId(req.body,(error,result)=>{
@@ -75,10 +101,37 @@ module.exports={
         })
     },
     CommentPost:(req,res)=>{
-
+        commentPost(req.body,(error,result)=>{
+            if (error) {
+                res.json({
+                    status: 404,
+                    message: error
+                })
+            }
+            else {
+                res.json({
+                    status: 200,
+                    message: 'Comment Created successfully'
+                })
+            }
+        })
     },
     GetCommentByPostId:(req,res)=>{
-
+        getCommentByPostId(req.body,(error,result)=>{
+            if (error) {
+                res.json({
+                    status: 404,
+                    message: error
+                })
+            }
+            else {
+                res.json({
+                    status: 200,
+                    message: 'comment fetching successfully',
+                    data:result
+                })
+            }
+        })
     },
     
 
