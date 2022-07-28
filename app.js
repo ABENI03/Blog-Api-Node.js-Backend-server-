@@ -1,12 +1,13 @@
 require('dotenv').config();
 const express=require('express');
 const usersRoute=require("./routes/usersRoute")
-
+const postsRoute=require('./routes/postsRoute')
 const app=express();
 const port=process.env.port;
 app.use(express.json())
 
 app.use('/user',usersRoute)
+app.use('/post',postsRoute)
 
 
 app.use('/*',(req,res)=>{
