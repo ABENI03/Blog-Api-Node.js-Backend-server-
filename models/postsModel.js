@@ -19,7 +19,7 @@ module.exports={
         
     },
     getPosts:(data,callback)=>{
-        var queryStatment = 'SELECT * FROM `post` ';
+        var queryStatment = 'SELECT post.id as postid ,post.authorId,post.title,post.summary,post.createdAt,user.firstName,user.middleName,user.lastName,user.mobile,user.profile,user.email FROM  `post` left join user on post.authorId=user.id';
         var values = [
           
 
@@ -56,7 +56,7 @@ module.exports={
         }) 
     },
     getPostbyUserId:(data,callback)=>{
-        var queryStatment = 'SELECT * FROM `post` where authorId=?';
+        var queryStatment = 'SELECT post.id as postid ,post.authorId,post.title,post.summary,post.createdAt,user.firstName,user.middleName,user.lastName,user.mobile,user.profile,user.email FROM  `post` join user on post.authorId=user.id where authorId=? ';
         var values = [
             data.userid,
 
@@ -67,7 +67,7 @@ module.exports={
         }) 
     },
     getPostbyPostId:(data,callback)=>{
-        var queryStatment = 'SELECT * FROM `post` where id=?';
+        var queryStatment = 'SELECT post.id as postid ,post.authorId,post.title,post.summary,post.createdAt,user.firstName,user.middleName,user.lastName,user.mobile,user.profile,user.email FROM  `post` join user on post.authorId=user.id where post.id=?';
         var values = [
             data.postid,
 

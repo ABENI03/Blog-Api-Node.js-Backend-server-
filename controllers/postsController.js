@@ -84,7 +84,7 @@ module.exports={
         })
     },
     GetPostbyPostId:(req,res)=>{
-        getPostbyPostId(req.body,(error,result)=>{
+        getPostbyPostId(req.params,(error,result)=>{
             if (error) {
                 res.json({
                     status: 404,
